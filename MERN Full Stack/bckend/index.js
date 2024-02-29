@@ -1,9 +1,12 @@
 // Dependencies
 const express = require("express");
 const App = express();
-App.use(express.json());
 const Mongoose = require("mongoose");
+const Cors=require('cors')
 const Port = 8080;
+
+App.use(express.json());
+App.use(Cors());
 
 
 
@@ -15,6 +18,9 @@ Mongoose.connect("mongodb://0.0.0.0:27017/BookStore")
   .catch((err) => {
     console.log(err);
   });
+
+
+
 
 // Setting up of Database Schema
 const DBSchema = new Mongoose.Schema(
@@ -36,6 +42,8 @@ const DBSchema = new Mongoose.Schema(
     timestamps: true,
   }
 );
+
+
 
 const Book = Mongoose.model("Book", DBSchema, "Book");
 
@@ -66,7 +74,8 @@ App.get("/book", (req, resp) => {
     });
 });
 
-// Here we are going to select  Data From Db by using id
+
+// Here we are select  Data From Db by using id
 App.get("/book/:id", (req, resp) => {
   const { id } = req.params;
   const selectBook = Book.findById(id)
@@ -77,6 +86,40 @@ App.get("/book/:id", (req, resp) => {
       console.log("Error", err);
     });
 });
+
+
+// Router for Update
+App.put("/book/:id", (req, resp) => {
+  const newBook = {
+    Title: "Fighting is Life",
+    author: "BYIRINGIRO",
+    PublishYear: 2020 - 22 - 20,
+  };
+  const { id } = req.params;
+  const book = Book.findByIdAndUpdate(id, newBook)
+    .then((data) => {
+      resp.json("Updated");
+    })
+    .catch((err) => {
+      console.log("Error", err);
+    });
+});
+
+
+
+// Router for Delete
+App.delete("/book/:id", (req, resp) => {
+  const { id } = req.params;
+  const book = Book.findByIdAndDelete(id)
+    .then((data) => {
+      resp.json("Deleted");
+    })
+    .catch((err) => {
+      console.log("Error", err);
+    });
+});
+
+
 
 // Listener of Port
 App.listen(Port, () => {

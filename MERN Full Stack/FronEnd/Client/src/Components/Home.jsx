@@ -28,7 +28,7 @@ export default function Home() {
     return (
 
         <div className="p-4">
-            <div className="flex justify-between justify-center  items-center">
+            <div className="flex   justify-between justify-center items-center">
                 <h2 className="text-3xl my-8 pl-5">Book List</h2>
 
                 <Link to="book/CreatBook" className="flex rounded  bg-sky-600 p-3 mr-20">
@@ -48,7 +48,7 @@ export default function Home() {
                 ) : (
                     <div className="flex gap-5 p-5" >
                         {Book.map((book, index) => (
-                            <div key={book._id} className=" border hover:border-sky-600 w-56 p-5 bg-slate-800  opacity-50 cursor-pointer ring-slate-200 shadow-slate-300">
+                            <div key={book._id} className=" border hover:border-sky-600 w-56 p-5 bg-slate-800  opacity-50 cursor-pointer ">
                                 <Link to={`book/Detail/${book._id}`}>
 
                                     <div className="">
@@ -62,7 +62,7 @@ export default function Home() {
                                             </h4>
                                             <h4>
                                                 <h2 className="font-extrabold">AUTHOR</h2>
-                                                {book.author}
+                                                {book.Author}
                                             </h4>
                                             <p>
                                                 <h2 className="font-extrabold">PUBLISH YEAR</h2>

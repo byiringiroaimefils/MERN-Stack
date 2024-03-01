@@ -2,13 +2,11 @@
 const express = require("express");
 const App = express();
 const Mongoose = require("mongoose");
-const Cors=require('cors')
+const Cors = require("cors");
 const Port = 8080;
 
 App.use(express.json());
 App.use(Cors());
-
-
 
 // Connection of Db
 Mongoose.connect("mongodb://0.0.0.0:27017/BookStore")
@@ -19,9 +17,6 @@ Mongoose.connect("mongodb://0.0.0.0:27017/BookStore")
     console.log(err);
   });
 
-
-
-
 // Setting up of Database Schema
 const DBSchema = new Mongoose.Schema(
   {
@@ -29,7 +24,7 @@ const DBSchema = new Mongoose.Schema(
       type: String,
       required: true,
     },
-    author: {
+    Author: {
       type: String,
       required: true,
     },
@@ -43,23 +38,21 @@ const DBSchema = new Mongoose.Schema(
   }
 );
 
-
-
 const Book = Mongoose.model("Book", DBSchema, "Book");
 
 // Here is to Post New book in DB and Also routing it
 App.post("/", (req, resp) => {
   const newBook = {
-    Title: "New Life",
-    author: "Fils",
-    PublishYear: 2020 - 2 - 20,
+    Title: req.body.Title,
+    Author: req.body.Author,
+    PublishYear: req.body.PublishYear,
   };
   const book = Book.create(newBook)
     .then((data) => {
       resp.json(data);
     })
     .catch((err) => {
-      console.log("Error", err);
+      console.log("Error",err);
     });
 });
 
@@ -74,7 +67,6 @@ App.get("/book", (req, resp) => {
     });
 });
 
-
 // Here we are select  Data From Db by using id
 App.get("/book/:id", (req, resp) => {
   const { id } = req.params;
@@ -87,14 +79,13 @@ App.get("/book/:id", (req, resp) => {
     });
 });
 
-
 // Router for Update
 App.put("/book/:id", (req, resp) => {
-  const newBook = {
-    Title: "Fighting is Life",
-    author: "BYIRINGIRO",
-    PublishYear: 2020 - 22 - 20,
-  };
+  // const newBook = {
+  //   Title: "Fighting is Life",
+  //   author: "BYIRINGIRO",
+  //   PublishYear: 2020 - 22 - 20,
+  // };
   const { id } = req.params;
   const book = Book.findByIdAndUpdate(id, newBook)
     .then((data) => {
@@ -104,8 +95,6 @@ App.put("/book/:id", (req, resp) => {
       console.log("Error", err);
     });
 });
-
-
 
 // Router for Delete
 App.delete("/book/:id", (req, resp) => {
@@ -118,8 +107,6 @@ App.delete("/book/:id", (req, resp) => {
       console.log("Error", err);
     });
 });
-
-
 
 // Listener of Port
 App.listen(Port, () => {

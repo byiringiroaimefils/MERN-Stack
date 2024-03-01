@@ -7,16 +7,15 @@ import ShowDetls from "./Components/ShowDetls"
 
 function App() {
 
-
   return (
     <div>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home/> } />
-          <Route path='Book' element={ <CreatBook />} />
-          <Route path='Book/delete/:id' element={<DeleteBook/> } />
-          <Route path='Book/Detail/:id' element={<ShowDetls/> } />
-          <Route path='Book/edit/:id' element={ < EditBook/>} />
+          <Route path='book/CreatBook' element={ <CreatBook />} />
+          <Route path='book/delete/:id' element={<DeleteBook/> } />
+          <Route path='book/Detail/:id' element={<ShowDetls/> } />
+          <Route path='book/edit/:id' element={ < EditBook/>} />
 
         </Routes>
 

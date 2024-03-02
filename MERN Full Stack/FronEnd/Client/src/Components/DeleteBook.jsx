@@ -32,9 +32,9 @@ export default function DeleteBook() {
         </button>
       </div>
       <div className="flex justify-center items-center h-80 flex-col">
-        <h2>Do you want to Delete This Book</h2>
+        <h2 className="font-extrabold">Do you want to Delete This Book</h2>
         {/* This button is going to Delete book by calling above function. */}
-        <button onClick={DeleteBook} className="rounded  bg-red-700 p-3 w-96">Yes,Delete It</button>
+        <button onClick={DeleteBook} className="rounded  bg-red-700 p-3 w-96 font-extrabold">Yes,Delete It</button>
       </div>
     </div>
 

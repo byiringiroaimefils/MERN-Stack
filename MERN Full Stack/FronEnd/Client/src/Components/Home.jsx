@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-// import Spinner from "./Spinner"
 import axios from "axios"
 import { Link } from "react-router-dom"
 import { AiOutlineEdit } from "react-icons/ai"
@@ -8,8 +7,10 @@ import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md"
 
 
 export default function Home() {
+
     const [Book, setBook] = useState([]);
     const [Loading, setLoading] = useState(false);
+
 
     useEffect(() => {
         setLoading(true);
@@ -24,7 +25,7 @@ export default function Home() {
             })
 
     }, [])
-    console.log(Book)
+
     return (
 
         <div className="p-4">
@@ -39,11 +40,11 @@ export default function Home() {
                 </Link>
 
             </div>
+
             {
                 Loading ? (
                     <div className="ml-6">
                         <p>Loading....</p>
-                        {/* // <Spinner /> */}
                     </div>
                 ) : (
                     <div className="flex gap-5 p-5" >
@@ -71,9 +72,6 @@ export default function Home() {
                                         </div>
 
                                         <div className="flex justify-center justify-between  pt-5">
-                                            {/* <Link to={`book/Detail/${book._id}`}>
-                                                {/* <BsInfoCircle className="text-2xl" /> */}
-                                            {/* </Link> */} 
                                             <Link to={`/book/edit/${book._id}`} >
                                                 <AiOutlineEdit className="text-2xl hover:text-sky-600" />
                                             </Link>
@@ -81,6 +79,7 @@ export default function Home() {
                                                 <MdOutlineDelete className="text-2xl hover:text-red-600" />
                                             </Link>
                                         </div>
+
                                     </div>
                                 </Link>
 
@@ -89,7 +88,6 @@ export default function Home() {
                         ))}
 
                     </div>
-
                 )
             }
         </div >

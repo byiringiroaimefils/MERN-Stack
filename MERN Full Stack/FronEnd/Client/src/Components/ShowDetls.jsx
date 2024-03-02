@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react"
-// import Spinner from "./Spinner"
 import axios from "axios"
-import { useParams,Link } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
+
 
 export default function ShowDetls() {
 
     const [Book, setBook] = useState([]);
     const [Loading, setLoading] = useState(false);
-    const { id } = useParams()
+    const { id } = useParams();
+
 
     useEffect(() => {
         setLoading(true);
@@ -21,23 +22,23 @@ export default function ShowDetls() {
                 setLoading(false);
             })
     }, [])
-    console.log(Book)
+
+
     return (
         <div>
             {Loading ? (
                 <p>Loading...</p>
             ) : (
                 <div>
-                   <div>
-                  <Link to='/'>
-                    Back
-                  </Link>
-                   </div>
-                    <div className="">
-                        <div>
-                            {/* <h6 className="pb-3">
-                                {Book._id+1}
-                            </h6> */}
+                    <div className="m-5">
+                        <button className="flex rounded  bg-sky-600 p-3" >
+                            <Link to='/'>
+                                Back
+                            </Link>
+                        </button>
+                    </div>
+                    <div>
+                        <div className="">
                             <h4>
                                 <h2 className="font-extrabold">TITLE</h2>
                                 {Book.Title}

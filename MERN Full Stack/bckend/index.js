@@ -52,7 +52,7 @@ App.post("/", (req, resp) => {
       resp.json(data);
     })
     .catch((err) => {
-      console.log("Error",err);
+      console.log("Error", err);
     });
 });
 
@@ -81,11 +81,11 @@ App.get("/book/:id", (req, resp) => {
 
 // Router for Update
 App.put("/book/:id", (req, resp) => {
-  // const newBook = {
-  //   Title: "Fighting is Life",
-  //   author: "BYIRINGIRO",
-  //   PublishYear: 2020 - 22 - 20,
-  // };
+  const newBook = {
+    Title: req.body.Title,
+    Author: req.body.Author,
+    PublishYear: req.body.PublishYear,
+  };
   const { id } = req.params;
   const book = Book.findByIdAndUpdate(id, newBook)
     .then((data) => {

@@ -9,6 +9,7 @@ export default function CreatBook() {
 
   const [Title, setTitle] = useState('');
   const [Author, setAuthor] = useState('');
+  const [Decription, setDecription] = useState('');
   const [PublishYear, setPublishYear] = useState('');
 
 
@@ -18,6 +19,7 @@ export default function CreatBook() {
     const data = {
       Title,
       Author,
+      Decription,
       PublishYear,
     }
     axios.post(`http://localhost:8080/`, data)
@@ -52,6 +54,11 @@ export default function CreatBook() {
         <input type="text"
         placeholder="Author"
           onChange={(e) => setAuthor(e.target.value)}
+          className="bg-transparent border w-96 h-10 p-3"
+        /> <br />
+        <input type="text"
+        placeholder="Decription"
+          onChange={(e) => setDecription(e.target.value)}
           className="bg-transparent border w-96 h-10 p-3"
         /> <br />
         <input type="number"

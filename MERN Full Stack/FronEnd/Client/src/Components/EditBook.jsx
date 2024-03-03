@@ -11,6 +11,7 @@ export default function CreatBook() {
 
   const [Title, setTitle] = useState('');
   const [Author, setAuthor] = useState('');
+  const [Decription, setDecription] = useState('');
   const [PublishYear, setPublishYear] = useState('');
 
   // Navigate for component.
@@ -24,6 +25,7 @@ export default function CreatBook() {
       .then((respond) => {
         setTitle(respond.data.Title)
         setAuthor(respond.data.Author)
+        setDecription(respond.data.Decription)
         setPublishYear(respond.data.PublishYear)
 
       })
@@ -38,6 +40,7 @@ export default function CreatBook() {
     const data = {
       Title,
       Author,
+      Decription,
       PublishYear,
     }
     axios.put(`http://localhost:8080/book/${id}`, data)
@@ -66,19 +69,26 @@ export default function CreatBook() {
       </div>
       <div className=" flex justify-center items-center h-96 flex-col">
         <input type="text"
-        placeholder="Title"
+          placeholder="Title"
           value={Title}
           onChange={(e) => setTitle(e.target.value)}
           className="bg-transparent border w-96 h-10 p-3"
         /> <br />
         <input type="text"
-        placeholder="Author"
+          placeholder="Author"
           value={Author}
           onChange={(e) => setAuthor(e.target.value)}
           className="bg-transparent border w-96 h-10 p-3"
-        /><br/>
+          /><br />
+        <input type="text"
+          placeholder="Decription"
+          value={Decription}
+          onChange={(e) => setDecription(e.target.value)}
+          className="bg-transparent border w-96 h-10 p-3"
+        /> <br />
+
         <input type="number"
-        placeholder="PublishYear"
+          placeholder="PublishYear"
           value={PublishYear}
           onChange={(e) => setPublishYear(e.target.value)}
           className="bg-transparent border w-96 h-10 p-3"

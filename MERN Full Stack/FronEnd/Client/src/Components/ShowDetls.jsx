@@ -47,6 +47,10 @@ export default function ShowDetls() {
                                 <h2 className="font-extrabold">AUTHOR</h2>
                                 {Book.Author}
                             </h4>
+                            <h4>
+                                <h2 className="font-extrabold">Decription</h2>
+                                {Book.Decription}
+                            </h4>
                             <p>
                                 <h2 className="font-extrabold">PUBLISH YEAR</h2>
                                 {Book.PublishYear}

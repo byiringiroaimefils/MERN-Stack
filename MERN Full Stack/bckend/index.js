@@ -28,6 +28,10 @@ const DBSchema = new Mongoose.Schema(
       type: String,
       required: true,
     },
+    Decription: {
+      type: String,
+      required: true,
+    },
     PublishYear: {
       type: Number,
       required: true,
@@ -45,6 +49,7 @@ App.post("/", (req, resp) => {
   const newBook = {
     Title: req.body.Title,
     Author: req.body.Author,
+    Decription:req.body.Decription,
     PublishYear: req.body.PublishYear,
   };
   const book = Book.create(newBook)
@@ -84,6 +89,7 @@ App.put("/book/:id", (req, resp) => {
   const newBook = {
     Title: req.body.Title,
     Author: req.body.Author,
+    Decription:req.body.Decription,
     PublishYear: req.body.PublishYear,
   };
   const { id } = req.params;

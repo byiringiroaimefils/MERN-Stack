@@ -9,7 +9,7 @@ const Port = 8080;
 App.use(express.json());
 App.use(Cors());
 
-// Connection of Db
+// Connection of Dbs
 Mongoose.connect("mongodb://0.0.0.0:27017/BookStore")
   .then(() => {
     console.log("Db is connected");

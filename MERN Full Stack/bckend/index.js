@@ -6,11 +6,16 @@ const Cors = require("cors");
 const Port = 8080;
 
 
+const corsOptions = {
+  origin: "http://localhost:5173" // frontend URI (ReactJS)
+}
+
+
 App.use(express.json());
 App.use(Cors());
 
 // Connection of Dbs
-Mongoose.connect("mongodb://0.0.0.0:27017/BookStore")
+Mongoose.connect("mongodb+srv://aimefils173:aime9088@cluster0.p3cmy8p.mongodb.net/")
   .then(() => {
     console.log("Db is connected");
   })

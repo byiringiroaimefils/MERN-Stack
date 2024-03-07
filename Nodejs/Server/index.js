@@ -7,7 +7,7 @@ const app = express()
 app.use(cors());
 
 // This is connection of MongoDb to connection
-mongoose.connect('mongodb://0.0.0.0:27017/Crud')
+mongoose.connect('mongodb+srv://aimefils173:aime9088@cluster0.p3cmy8p.mongodb.net/')
     .then(() => {
         console.log("conntected")
     })
@@ -19,7 +19,7 @@ mongoose.connect('mongodb://0.0.0.0:27017/Crud')
 const DbSchema = new mongoose.Schema({
     Task:String
 })
-const Dbmodel = mongoose.model("todolist", DbSchema,"todolist")
+const Dbmodel = mongoose.model("Book", DbSchema,"Book")
 
 
 // Router

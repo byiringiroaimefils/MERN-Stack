@@ -28,7 +28,7 @@ function App() {
           <div>
           {data.map(item => (
             <div key={item._id}>
-              <p>{item.Task}</p>
+              <p>{item.Author}</p>
             </div>
           ))}
         </div>

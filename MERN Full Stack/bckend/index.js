@@ -3,7 +3,8 @@ const express = require("express");
 const App = express();
 const Mongoose = require("mongoose");
 const Cors = require("cors");
-const Port = 8080;
+require("dotenv").config();
+const Port =process.env.PORT;
 
 
 const corsOptions = {
@@ -15,7 +16,7 @@ App.use(express.json());
 App.use(Cors());
 
 // Connection of Dbs
-Mongoose.connect("mongodb+srv://aimefils173:aime9088@cluster0.p3cmy8p.mongodb.net/")
+Mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("Db is connected");
   })

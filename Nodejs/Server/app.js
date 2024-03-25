@@ -2,12 +2,19 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
-const port =8080
+const port =8080 
 const app = express()
 app.use(cors());
+require("dotenv").config();
+
+// middleware
+const corsOptions = {
+    origin: "http://localhost:3000" // frontend URI (ReactJS)
+}
+
 
 // This is connection of MongoDb to connection
-mongoose.connect('mongodb+srv://aimefils173:aime9088@cluster0.p3cmy8p.mongodb.net/')
+mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
         console.log("conntected")
     })
@@ -32,6 +39,7 @@ app.get("/Db", (req, res) => {
                console.log("Error",err)
         })
 })
+
 
 app.listen(port, () => {
     console.log(`This is app is running ${port}`)
